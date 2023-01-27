@@ -118,10 +118,10 @@ def getAutoSettings(runtimename):
 
 
   if runtimename == "cifar10":
-    stage_paramaters.append([1.00,1.00,2,0.70])
-    stage_paramaters.append([1.02,0.99,2,0.72])
-    stage_paramaters.append([1.04,0.98,2,0.73])
-    stage_paramaters.append([1.07,0.97,2,0.75])
+    stage_paramaters.append([1.00,1.00,10,0.70])
+    stage_paramaters.append([1.02,0.99,10,0.72])
+    stage_paramaters.append([1.04,0.98,10,0.73])
+    stage_paramaters.append([1.07,0.97,10,0.75])
     batch_size = 256;
     height = 32;
     width = 32;

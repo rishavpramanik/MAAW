@@ -11,7 +11,7 @@ from utils.data_generator import *
 from MAAW import *
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--runtimename', type=str, default = './', help='Directory where the image data is stored')
+parser.add_argument('--runtimename', type=str, default = './', help='Cuurent Run Time Name')
 parser.add_argument('--auto', type=bool, default = False, help='Autometic Parameter Setting According To Runtime')
 parser.add_argument('--model_save', type=bool, default = False, help='Autometic Model Save')
 parser.add_argument('--batch_size', type=int, default = 256, help='Batch size for training')
@@ -34,6 +34,14 @@ WIDTH = args.width;
 INIT_LEARNING_RATE = args.init_learning_rate
 
 BATCH_SIZE, HEIGHT, WIDTH, INIT_LEARNING_RATE, stage_paramaters = getAutoSettings(runtimename);
+if args.auto == False:
+  BATCH_SIZE = args.batch_size;
+  HEIGHT = args.height;
+  WIDTH = args.width;
+  INIT_LEARNING_RATE = args.init_learning_rate
+  print("Manual Parsing Is Yet To Be Done")
+  assert(0)
+
 train_generator,validation_generator,auto_t_steps_per_epoch,auto_v_steps_per_epoch, NUM_CLASS = data_generator(runtimename, BATCH_SIZE, HEIGHT, WIDTH)
 
 print("----- Automatic Paramters -----")
@@ -43,8 +51,8 @@ print("Width : ",WIDTH)
 print("INIT_LEARNING_RATE : ",INIT_LEARNING_RATE)
 print("Stage Paramters: ",stage_paramaters)
 print("-------------------------------")
-auto_t_steps_per_epoch = 3
-auto_v_steps_per_epoch = 3
+# auto_t_steps_per_epoch = 3
+# auto_v_steps_per_epoch = 3
 
 test_generator = validation_generator
 
