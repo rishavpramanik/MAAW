@@ -16,7 +16,7 @@ def softmax_Layer(temp=1,NUM_CLASS=10):
 
 def lr_scheduler(lr,epoch):
   if epoch == 5:
-    return lr*10;
+    return lr/10;
   return lr;
 
 def run_optimizer(model,optimizer,loss_object, x , y_true):
@@ -80,7 +80,7 @@ def train(model,loss_object, train , test ,train_acc_metric, val_acc_metric, epo
     lr = INIT_LEARNING_RATE
 
     for epoch in range(epochs):
-        lr = lr*0.98;
+        # lr = lr*0.98;
         lr = lr_scheduler(lr,epoch)
 
         optimizer = tk.optimizers.Adam(learning_rate=lr)
