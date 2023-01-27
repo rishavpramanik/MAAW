@@ -34,7 +34,7 @@ WIDTH = args.width;
 INIT_LEARNING_RATE = args.init_learning_rate
 
 BATCH_SIZE, HEIGHT, WIDTH, INIT_LEARNING_RATE, stage_paramaters = getAutoSettings(runtimename);
-train_generator,validation_generator,auto_t_steps_per_epoch,auto_v_steps_per_epoch = data_generator(runtimename, BATCH_SIZE, HEIGHT, WIDTH)
+train_generator,validation_generator,auto_t_steps_per_epoch,auto_v_steps_per_epoch, NUM_CLASS = data_generator(runtimename, BATCH_SIZE, HEIGHT, WIDTH)
 
 print("----- Automatic Paramters -----")
 print("Batch Size : ",BATCH_SIZE)
@@ -46,7 +46,6 @@ print("-------------------------------")
 auto_t_steps_per_epoch = 3
 auto_v_steps_per_epoch = 3
 
-NUM_CLASS = train_generator.num_classes
 test_generator = validation_generator
 
 train_acc_metric = tf.keras.metrics.CategoricalAccuracy()
