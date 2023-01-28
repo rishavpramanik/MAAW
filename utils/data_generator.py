@@ -8,12 +8,12 @@ import numpy as np
 def fmnistutil(irs):
   def makeImablanced(data,num_classes, irs):
     n = int(data.shape[0]/num_classes)
-    unb_data = data.T[0:int(n*irs[0])];
-    prev = n;
+    unb_data = data.T[0:int(n*irs[0])]
+    prev = n
     for i in range(1,num_classes):
       unb_data = np.concatenate([unb_data, data.T[prev:(prev+int(n*irs[i]))]]);
-      prev = n*(i+1);
-    return unb_data.T;
+      prev = n*(i+1)
+    return unb_data.T
 
 
 
@@ -23,8 +23,8 @@ def fmnistutil(irs):
   sorted_index_train = np.argsort(y_train, axis=0).T[0]
   sorted_index_test = np.argsort(y_test, axis=0).T[0]
 
-  imb_sorted_index_train = makeImablanced(sorted_index_train,10,irs);
-  imb_sorted_index_test =  makeImablanced(sorted_index_test,10,irs);
+  imb_sorted_index_train = makeImablanced(sorted_index_train,10,irs)
+  imb_sorted_index_test =  makeImablanced(sorted_index_test,10,irs)
 
   x_train_imb = x_train[imb_sorted_index_train]
   y_train_imb = y_train[imb_sorted_index_train] 
