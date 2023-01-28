@@ -1,0 +1,8 @@
+tensorflow
+keras
+numpy
+matplotlib
+tqdm
+zipfile
+sklearn
+imblearn
