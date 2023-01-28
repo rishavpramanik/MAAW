@@ -26,7 +26,7 @@ def getShiftedPred(y_true,y_pred, a_pred, weight_last_layer,bias_last_layer,maj_
   soft_prediction = softMaxLayer(z) 
   return soft_prediction
 
-def sparseCategorical_LSM_DWB_Loss(y_true,y_pred, a_pred, weight_last_layer,bias_last_layer,maj_wt=1.0, min_wt=1.0):
+def MAAW_Loss(y_true,y_pred, a_pred, weight_last_layer,bias_last_layer,maj_wt=1.0, min_wt=1.0):
   y_pred = tf.convert_to_tensor(y_pred)
   y_true = tf.convert_to_tensor(y_true)
   a_pred = tf.convert_to_tensor(a_pred)
@@ -45,10 +45,10 @@ def sparseCategorical_LSM_DWB_Loss(y_true,y_pred, a_pred, weight_last_layer,bias
   return xcent_mean
 
 
-class SparseCategorical_LSM_DWB_Loss:
+class MAAW_Loss:
   def __init__(self, maj_wt=1.0, min_wt=1.0):
     self.maj_wt = maj_wt
     self.min_wt = min_wt
     pass
   def __call__(self, y_true,y_pred, a_pred, weight_last_layer,bias_last_layer):
-    return sparseCategorical_LSM_DWB_Loss(y_true,y_pred, a_pred, weight_last_layer,bias_last_layer,self.maj_wt, self.min_wt)
+    return MAAW_Loss(y_true,y_pred, a_pred, weight_last_layer,bias_last_layer,self.maj_wt, self.min_wt)
