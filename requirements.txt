@@ -6,3 +6,4 @@ tqdm
 zipfile
 sklearn
 imblearn
+pandas
