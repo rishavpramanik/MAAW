@@ -20,7 +20,7 @@ parser.add_argument('--width', type=int, default = 32, help='Width Of Image')
 parser.add_argument('--init_learning_rate', type=float, default = 0.0001, help='Initial Learning Rate')
 args = parser.parse_args()
 
-runtimename = args.runtimename;
+runtimename = args.runtimename
 model_save_dir = 'saved_models/'
 
 """
@@ -28,16 +28,16 @@ model_save_dir = 'saved_models/'
 ##Data Batching"""
 print("=========================== Data Batching ==========================")
 print("Current Run Time : "+runtimename)
-BATCH_SIZE = args.batch_size;
-HEIGHT = args.height;
-WIDTH = args.width;
+BATCH_SIZE = args.batch_size
+HEIGHT = args.height
+WIDTH = args.width
 INIT_LEARNING_RATE = args.init_learning_rate
 
-BATCH_SIZE, HEIGHT, WIDTH, INIT_LEARNING_RATE, stage_paramaters = getAutoSettings(runtimename);
-if args.auto == False:
-  BATCH_SIZE = args.batch_size;
-  HEIGHT = args.height;
-  WIDTH = args.width;
+BATCH_SIZE, HEIGHT, WIDTH, INIT_LEARNING_RATE, stage_paramaters = getAutoSettings(runtimename)
+if args.auto == False
+  BATCH_SIZE = args.batch_size
+  HEIGHT = args.height
+  WIDTH = args.width
   INIT_LEARNING_RATE = args.init_learning_rate
   print("Manual Parsing Is Yet To Be Done")
   assert(0)
@@ -82,10 +82,12 @@ for alpha,beta,max_epoch,val_acc_thresh in stage_paramaters:
   print("****** Current Parameters : alpha = "+str(alpha)+", beta = "+str(beta)+", max_epoch = "+str(max_epoch)+", val_acc_thresh = "+str(val_acc_thresh)+" *******")
 
   loss_object = MAAW_Loss(maj_wt=alpha,min_wt=beta)
-  history = train(model,loss_object, train_generator , validation_generator, train_acc_metric, val_acc_metric, epochs = max_epoch,t_steps_per_epoch=auto_t_steps_per_epoch,v_steps_per_epoch=auto_v_steps_per_epoch,val_acc_threshold=val_acc_thresh,INIT_LEARNING_RATE=INIT_LEARNING_RATE)
+  history = train(model,loss_object, train_generator , validation_generator, train_acc_metric, val_acc_metric,
+                  epochs = max_epoch,t_steps_per_epoch=auto_t_steps_per_epoch,v_steps_per_epoch=auto_v_steps_per_epoch,
+                  val_acc_threshold=val_acc_thresh,INIT_LEARNING_RATE=INIT_LEARNING_RATE)
   MODELS.append(model)
   HISTORYS.append(history)
   if args.model_save == True:
     model.save(model_save_dir+runtimename+"_"+str(int(alpha*100))+"_"+str(int(beta*100))+".h5")
     print("[ Model Saved As "+model_save_dir+runtimename+"_"+str(alpha)+"_"+str(beta)+".h5 ]")
-  computePerformance(x_test, y_test, model);
+  computePerformance(x_test, y_test, model)
