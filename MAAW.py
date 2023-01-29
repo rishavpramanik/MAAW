@@ -38,6 +38,15 @@ def getShiftedPred(y_true,y_pred, a_pred, weight_last_layer,bias_last_layer,maj_
     return soft_prediction
 
 def MAAW_Loss(y_true,y_pred, a_pred, weight_last_layer,bias_last_layer,maj_wt=1.0, min_wt=1.0):
+    """
+    y_true: the true labels for the data
+    y_pred: the predicted labels from the model
+    a_pred: the activations from the penultimate layer of the model
+    weight_last_layer: the weights of the last layer of the model
+    bias_last_layer: the biases of the last layer of the model
+    maj_wt: a weighting factor for the majority class (default value is 1.0)
+    min_wt: a weighting factor for the minority class (default value is 1.0)
+    """
   #Convert inputs to tensor
   y_pred = tf.convert_to_tensor(y_pred)
   y_true = tf.convert_to_tensor(y_true)
