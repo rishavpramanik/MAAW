@@ -63,7 +63,7 @@ def fmnistutil(irs):
 
 
 
-def data_generator(runtimename, BATCH_SIZE, HEIGHT, WIDTH):
+def data_generator(runtimename,base_dir, BATCH_SIZE, HEIGHT, WIDTH):
     train_datagen = ImageDataGenerator(
         rescale = 1./ 255.
     )
@@ -76,14 +76,14 @@ def data_generator(runtimename, BATCH_SIZE, HEIGHT, WIDTH):
         pass
     if runtimename == 'cifar10':
         train_generator = train_datagen.flow_from_directory(
-            'Data/cifar10/cifar10_train',
+            base_dir+'Data/cifar10/cifar10_train',
             batch_size = BATCH_SIZE,
             class_mode = 'categorical',
             target_size = (HEIGHT,WIDTH)
         );
 
         validation_generator = valid_datagen.flow_from_directory(
-            'Data/cifar10/cifar10_test',
+            base_dir+'Data/cifar10/cifar10_test',
             batch_size = BATCH_SIZE,
             class_mode = 'categorical',
             target_size = (HEIGHT,WIDTH)
@@ -92,14 +92,14 @@ def data_generator(runtimename, BATCH_SIZE, HEIGHT, WIDTH):
 
     if runtimename == 'cifar50':
         train_generator = train_datagen.flow_from_directory(
-            'Data/cifar50/cifar50_train',
+            base_dir+'Data/cifar50/cifar50_train',
             batch_size = BATCH_SIZE,
             class_mode = 'categorical',
             target_size = (HEIGHT,WIDTH)
         );
 
         validation_generator = valid_datagen.flow_from_directory(
-            'Data/cifar50/cifar50_test',
+            base_dir+'Data/cifar50/cifar50_test',
             batch_size = BATCH_SIZE,
             class_mode = 'categorical',
             target_size = (HEIGHT,WIDTH)
@@ -107,14 +107,14 @@ def data_generator(runtimename, BATCH_SIZE, HEIGHT, WIDTH):
         return train_generator,validation_generator,train_generator.n//BATCH_SIZE,validation_generator.n//BATCH_SIZE,train_generator.num_classes;
     if runtimename == 'cifar100':
         train_generator = train_datagen.flow_from_directory(
-            'Data/cifar100/cifar100_train',
+            base_dir+'Data/cifar100/cifar100_train',
             batch_size = BATCH_SIZE,
             class_mode = 'categorical',
             target_size = (HEIGHT,WIDTH)
         );
 
         validation_generator = valid_datagen.flow_from_directory(
-            'Data/cifar100/cifar100_test',
+            base_dir+'Data/cifar100/cifar100_test',
             batch_size = BATCH_SIZE,
             class_mode = 'categorical',
             target_size = (HEIGHT,WIDTH)
@@ -136,7 +136,7 @@ def data_generator(runtimename, BATCH_SIZE, HEIGHT, WIDTH):
         );
 
         validation_generator = valid_datagen.flow_from_directory(
-            'Data/ham10000/Reduced_Test_Unbalanced_DataSet',
+            base_dir+'Data/ham10000/Reduced_Test_Unbalanced_DataSet',
             batch_size = BATCH_SIZE,
             class_mode = 'categorical',
             target_size = (HEIGHT,WIDTH)
@@ -145,7 +145,7 @@ def data_generator(runtimename, BATCH_SIZE, HEIGHT, WIDTH):
 
     if runtimename == 'aptos':
         datagen=ImageDataGenerator(rescale=1./255., validation_split=0.2)
-        src_dir = 'Data/aptos'
+        src_dir = base_dir+'Data/aptos'
 
         train_generator=datagen.flow_from_directory(
             src_dir,

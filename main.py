@@ -11,8 +11,9 @@ from utils.data_generator import *
 from MAAW import *
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--runtimename', type=str, default = './', help='Cuurent Run Time Name')
+parser.add_argument('--runtimename', type=str, default = None, help='Cuurent Run Time Name')
 parser.add_argument('--auto', type=bool, default = False, help='Autometic Parameter Setting According To Runtime')
+parser.add_argument('--base_dir', type=str, default = './', help='Base Directory Of Dataset')
 parser.add_argument('--model_save', type=bool, default = False, help='Autometic Model Save')
 parser.add_argument('--batch_size', type=int, default = 256, help='Batch size for training')
 parser.add_argument('--height', type=int, default = 32, help='Height Of Image')
@@ -21,7 +22,7 @@ parser.add_argument('--init_learning_rate', type=float, default = 0.0001, help='
 args = parser.parse_args()
 
 runtimename = args.runtimename
-model_save_dir = 'saved_models/'
+model_save_dir = args.base_dir+'saved_models/'
 
 """
 
@@ -42,7 +43,7 @@ if args.auto == False:
   print("Manual Parsing Is Yet To Be Done")
   assert(0)
 
-train_generator,validation_generator,auto_t_steps_per_epoch,auto_v_steps_per_epoch, NUM_CLASS = data_generator(runtimename, BATCH_SIZE, HEIGHT, WIDTH)
+train_generator,validation_generator,auto_t_steps_per_epoch,auto_v_steps_per_epoch, NUM_CLASS = data_generator(runtimename,args.base_dir, BATCH_SIZE, HEIGHT, WIDTH)
 
 print("----- Automatic Paramters -----")
 print("Batch Size : ",BATCH_SIZE)
