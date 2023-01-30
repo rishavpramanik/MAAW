@@ -15,10 +15,10 @@ parser.add_argument('--runtimename', type=str, default = None, help='Cuurent Run
 parser.add_argument('--auto', type=bool, default = False, help='Autometic Parameter Setting According To Runtime')
 parser.add_argument('--base_dir', type=str, default = './', help='Base Directory Of Dataset')
 parser.add_argument('--model_save', type=bool, default = False, help='Autometic Model Save')
-# parser.add_argument('--batch_size', type=int, default = 256, help='Batch size for training')
-# parser.add_argument('--height', type=int, default = 32, help='Height Of Image')
-# parser.add_argument('--width', type=int, default = 32, help='Width Of Image')
-# parser.add_argument('--init_learning_rate', type=float, default = 0.0001, help='Initial Learning Rate')
+parser.add_argument('--batch_size', type=int, default = 256, help='Batch size for training')
+parser.add_argument('--height', type=int, default = 32, help='Height Of Image')
+parser.add_argument('--width', type=int, default = 32, help='Width Of Image')
+parser.add_argument('--init_learning_rate', type=float, default = 0.0001, help='Initial Learning Rate')
 args = parser.parse_args()
 
 runtimename = args.runtimename
