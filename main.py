@@ -29,19 +29,19 @@ model_save_dir = args.base_dir+'saved_models/'
 ##Data Batching"""
 print("=========================== Data Batching ==========================")
 print("Current Run Time : "+runtimename)
-BATCH_SIZE = args.batch_size
-HEIGHT = args.height
-WIDTH = args.width
-INIT_LEARNING_RATE = args.init_learning_rate
+BATCH_SIZE = None
+HEIGHT = None
+WIDTH = None
+INIT_LEARNING_RATE = None
 
 BATCH_SIZE, HEIGHT, WIDTH, INIT_LEARNING_RATE, stage_paramaters = getAutoSettings(runtimename)
+  print("Manual Parsing Is Yet To Be Done")
+  assert(0)
 if args.auto == False:
   BATCH_SIZE = args.batch_size
   HEIGHT = args.height
   WIDTH = args.width
   INIT_LEARNING_RATE = args.init_learning_rate
-  print("Manual Parsing Is Yet To Be Done")
-  assert(0)
 
 train_generator,validation_generator,auto_t_steps_per_epoch,auto_v_steps_per_epoch, NUM_CLASS = data_generator(runtimename,args.base_dir, BATCH_SIZE, HEIGHT, WIDTH)
 
