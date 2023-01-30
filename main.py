@@ -82,7 +82,7 @@ for alpha,beta,max_epoch,val_acc_thresh in stage_paramaters:
   STAGE = STAGE+1
   print("****** Current Parameters : alpha = "+str(alpha)+", beta = "+str(beta)+", max_epoch = "+str(max_epoch)+", val_acc_thresh = "+str(val_acc_thresh)+" *******")
 
-  loss_object = MAAW_Loss(maj_wt=alpha,min_wt=beta)
+  loss_object = SparseCategorcial_MAAW_Loss(maj_wt=alpha,min_wt=beta)
   history = train(model,loss_object, train_generator , validation_generator, train_acc_metric, val_acc_metric,
                   epochs = max_epoch,t_steps_per_epoch=auto_t_steps_per_epoch,v_steps_per_epoch=auto_v_steps_per_epoch,
                   val_acc_threshold=val_acc_thresh,INIT_LEARNING_RATE=INIT_LEARNING_RATE)
