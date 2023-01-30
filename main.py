@@ -34,7 +34,7 @@ WIDTH = args.width
 INIT_LEARNING_RATE = args.init_learning_rate
 
 BATCH_SIZE, HEIGHT, WIDTH, INIT_LEARNING_RATE, stage_paramaters = getAutoSettings(runtimename)
-if args.auto == False
+if args.auto == False:
   BATCH_SIZE = args.batch_size
   HEIGHT = args.height
   WIDTH = args.width
