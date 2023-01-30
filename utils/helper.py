@@ -138,7 +138,7 @@ def getAutoSettings(runtimename):
 
   if runtimename == "cifar100":
     stage_paramaters.append([1.00,1.00,10,0.58])
-    stage_paramaters.append([1.02,0.98,10,0.62])
+    stage_paramaters.append([1.02,0.99,10,0.62])
     batch_size = 256;
     height = 32;
     width = 32;
